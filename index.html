@@ -4,87 +4,107 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>media quary</title>
-
-<style>
-
+    <style>
     @font-face {
-        font-family: 'HsGultokki';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/HSGooltokki.woff2') format('woff2');
-        font-weight: normal;
-        font-display: swap;
-    }
-    
-    html {
-        font-familly: "HsGultokki";
-        font-size: 28px;
-        text-align: center;
-        display: flex;
-    }
+    font-family: 'HsHouseRabbitBlack';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/HSJiptokki-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
 
-    /* @media (max-width: 767px)  {
-        
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-
-    }
-
-    @media (min-width: 1024px) {
-
-    } */
-
-    @media print {
-        body {
-            background-color: #384;
-            color: lime;
-        }
-    }
-
-    @media (orientation: portrait) {
-        body {
-            background-color: #938;
-            color: red;
-        }
-        @media (prefers-color-scheme: light) {
-        #mq {
-            text-decoration: underline 2px #FFF;
-            text-underline-offset: 4px;
-            }
-    }
-
-    @media (prefers-color-scheme: dark) {
-        #mq {
-            text-decoration: underline 2px #000;
-            text-underline-offset: 4px;
-            }
-    }
-    }
-
-    @media (orientation: landscape) {
-        body {
-            background-color: #111;
-            color: blue;
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
-    @media (prefers-color-scheme: light) {
+        body {
+            position: fixed;
+            inset: 0;
+            padding: 24px;
+            box-sizing: border-box;
+            background: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         #mq {
-            text-decoration: underline 2px #FFF;
-            text-underline-offset: 4px;
+            margin: 0;
+            font-family: "HsHouseRabbitBlack";
+            font-size: 24px;
+            text-align: center;
+            overflow-wrap: break-word;
+            flex: 0 0 auto;
+        }
+
+        .stage {
+            position: relative;
+            flex: 1 1 auto;
+            width: 100%;
+            min-height: 0;
+        }
+
+        .stage img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        #land {
+            display: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #000;
+                color: #fff;
             }
-    }
 
-    @media (prefers-color-scheme: dark) {
-        #mq {
-            text-decoration: underline 2px #000;
-            text-underline-offset: 4px;
+            .stage img {
+                filter: grayscale(1);
             }
-    }
-    }
+        }
 
-</style>
+        @media (orientation: landscape) {
+            #land {
+                display: block;
+            }
 
+            #port {
+                display: none;
+            }
+        }
+
+        @media print {
+            html, body {
+                position: static;
+                height: 100vh;
+                overflow: visible;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            #land, #port {
+                display: block;
+                opacity: 0.5;
+            }
+        }
+    </style>
 </head>
 <body>
-    <span id="mq">Media Quary</span>
+    <p id="mq">Rotate your screen, Switch Light and Dark mode, Print it.</p>
+    <div class="stage">
+        <img id="land" src="landscape.jpg" alt="">
+        <img id="port" src="portrait.jpg" alt="">
+    </div>
 </body>
 </html>
