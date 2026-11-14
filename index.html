@@ -38,6 +38,19 @@
             background-color: #938;
             color: red;
         }
+        @media (prefers-color-scheme: light) {
+        #mq {
+            text-decoration: underline 2px #FFF
+            text-underline-offset: 4px;
+            }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #mq {
+            text-decoration: underline 2px #000
+            text-underline-offset: 4px;
+            }
+    }
     }
 
     @media (orientation: landscape) {
@@ -45,20 +58,20 @@
             background-color: #111;
             color: blue;
         }
-    }
 
     @media (prefers-color-scheme: light) {
-        body {
-            background-color: white;
-            color: #111;
-        }
+        #mq {
+            text-decoration: underline 2px #FFF
+            text-underline-offset: 4px;
+            }
     }
 
     @media (prefers-color-scheme: dark) {
-        body {
-            background-color: #111;
-            color: white;
-        }
+        #mq {
+            text-decoration: underline 2px #000
+            text-underline-offset: 4px;
+            }
+    }
     }
 
 </style>
